@@ -10,9 +10,11 @@ import Garage from "./pages/Garage.jsx";
 import Tracks from "./pages/Tracks.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import TopTracks from "./components/Tracks/TopTracks.jsx";
 
 
 function App() {
+ 
 
   return (
     <Router>
@@ -29,6 +31,11 @@ function App() {
         <Route path="/details/:id" element={<Details />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <div>
+      <TopTracks />
+    </div>
+
       <Footer />
     </Router>
   );
