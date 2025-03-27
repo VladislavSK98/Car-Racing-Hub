@@ -10,7 +10,6 @@ import Garage from "./pages/Garage.jsx";
 import Tracks from "./pages/Tracks.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-import TopTracks from "./components/Tracks/TopTracks.jsx";
 
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
     <Router>
       <Header />
       <Navigation />
-      <p>Welcome to the Car Racing Hub!</p>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/parking" element={<Parking />} />
@@ -31,10 +30,6 @@ function App() {
         <Route path="/details/:id" element={<Details />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-      <div>
-      <TopTracks />
-    </div>
 
       <Footer />
     </Router>

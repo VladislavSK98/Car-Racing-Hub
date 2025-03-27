@@ -1,18 +1,45 @@
-import styles from "./Styles/Garage.module.css";
+import { useState, useEffect } from "react";
+import AddCar from "../components/AddCar";
+import styles from "../pages/Styles/Garage.module.css";
 
-function Garage() {
-    const cars = ["BMW E36", "Nissan Silvia S15", "Honda S2000"];
+const Garage = () => {
+  const [cars, setCars] = useState([]);
+  const token = localStorage.getItem("token");
 
-    return (
-        <div className={styles.container}>
-            <h1 className={styles.title}>My Garage</h1>
-            <div className={styles.list}>
-                {cars.map((car, index) => (
-                    <div key={index} className={styles.listItem}>{car}</div>
-                ))}
+  useEffect(() => {
+    if (!token) return;
+    fetch("http://localhost:5000/api/cars/my-garage", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => setCars(data))
+      .catch((err) => console.error("Error fetching user cars:", err));
+  }, [token]);
+
+  return (
+    <main className="page-container">
+    <div className={styles.container}>
+      <h2 className={styles.title}>My Garage</h2>
+      <AddCar onCarAdded={() => window.location.reload()} />
+      <div className={styles.carsList}>
+        {cars.length === 0 ? (
+          <p>No cars added yet. Add your first car!</p>
+        ) : (
+          cars.map((car) => (
+            <div key={car._id} className={styles.carCard}>
+              <img src={car.image} alt={car.model} className={styles.carImage} />
+              <div className={styles.carInfo}>
+                <h3>{car.brand} {car.model}</h3>
+                <p><strong>Year:</strong> {car.year}</p>
+                <p><strong>Horsepower:</strong> {car.horsepower} HP</p>
+              </div>
             </div>
-        </div>
-    );
-}
+          ))
+        )}
+      </div>
+    </div>
+    </main>
+  );
+};
 
 export default Garage;
