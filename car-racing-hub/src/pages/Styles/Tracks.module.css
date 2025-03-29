@@ -1,16 +1,23 @@
 .container {
-    padding: 30px;
-}
-
-.title {
-    font-size: 28px;
-    color: #222;
-    margin-bottom: 10px;
-}
-
-.trackCard {
-    background: #eee;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-}
+    padding: 2rem;
+    background: linear-gradient(45deg, #222, #1a1a1a);
+    border-radius: 10px;
+  }
+  
+  .trackCard {
+    background: var(--light-gray);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .trackCard:hover {
+    transform: scale(1.05);
+    box-shadow: var(--neon-glow);
+  }
+  
+  .trackImage {
+    width: 100%;
+    border-radius: 10px;
+  }
+  

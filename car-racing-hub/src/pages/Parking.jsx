@@ -12,7 +12,6 @@ const Parking = () => {
   }, []);
 
   return (
-    <main className="page-container"> 
       <div className={styles.container}>
         <h2 className={styles.title}>All Cars in Parking</h2>
         <div className={styles.carsList}>
@@ -36,7 +35,6 @@ const Parking = () => {
           )}
         </div>
       </div>
-    </main>
   );
 };
 

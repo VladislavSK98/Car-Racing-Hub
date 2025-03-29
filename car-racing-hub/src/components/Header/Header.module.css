@@ -1,11 +1,27 @@
 .header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Центрира съдържанието */
+    position: relative; /* Позволява абсолютното позициониране на заглавието */
+    width: 100%;
+    gap:50px;
+    max-width: 1200px;
+    margin: 0 auto;
     background: linear-gradient(90deg, black, #ff1e00);
     color: white;
-    padding: 30px;
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
+    padding: 15px 30px;
+    font-size: 16px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  
+  .logo {
+    height: 90%; /* Намалява размера на логото */
+    position: absolute;
+    left: 30px; /* Заковава го в левия край */
+  }
+  
+  .title {
+    margin: 0 auto; /* Центрира заглавието в хедъра */
   }
   

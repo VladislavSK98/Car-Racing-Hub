@@ -17,7 +17,6 @@ const Garage = () => {
   }, [token]);
 
   return (
-    <main className="page-container">
     <div className={styles.container}>
       <h2 className={styles.title}>My Garage</h2>
       <AddCar onCarAdded={() => window.location.reload()} />
@@ -38,7 +37,6 @@ const Garage = () => {
         )}
       </div>
     </div>
-    </main>
   );
 };
 
