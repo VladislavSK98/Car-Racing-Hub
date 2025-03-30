@@ -20,11 +20,11 @@ const Parking = () => {
           ) : (
             cars.map((car) => (
               <div key={car._id} className={styles.carCard}>
-                <img src={car.image} alt={car.model} className={styles.carImage} />
+                <img src={car.imageUrl} alt={car.model} className={styles.carImage} />
                 <div className={styles.carInfo}>
-                  <h3>{car.brand} {car.model}</h3>
+                  <h3>{car.make} {car.model}</h3>
                   <p><strong>Year:</strong> {car.year}</p>
-                  <p><strong>Horsepower:</strong> {car.horsepower} HP</p>
+                  <p><strong>Horsepower:</strong> {car.power} HP</p>
                   <p>
                     <strong>Owner:</strong>{" "}
                     {car.owner ? car.owner.username : "Unknown"}
