@@ -1,40 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AddCar from "../components/AddCar";
-import styles from "../pages/Styles/Garage.module.css";
+import AddTrack from "../components/Garage/AddTrack";
+import AddPost from "../components/Garage/AddPost";
+import styles from "./Styles/Garage.module.css";
 
 const Garage = () => {
-  const [cars, setCars] = useState([]);
-  const token = localStorage.getItem("token");
-
-  useEffect(() => {
-    if (!token) return;
-    fetch("http://localhost:5000/api/cars/my-garage", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((res) => res.json())
-      .then((data) => setCars(data))
-      .catch((err) => console.error("Error fetching user cars:", err));
-  }, [token]);
+  const [activeTab, setActiveTab] = useState("cars");
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>My Garage</h2>
-      <AddCar onCarAdded={() => window.location.reload()} />
-      <div className={styles.carsList}>
-        {cars.length === 0 ? (
-          <p>No cars added yet. Add your first car!</p>
-        ) : (
-          cars.map((car) => (
-            <div key={car._id} className={styles.carCard}>
-              <img src={car.image} alt={car.model} className={styles.carImage} />
-              <div className={styles.carInfo}>
-                <h3>{car.brand} {car.model}</h3>
-                <p><strong>Year:</strong> {car.year}</p>
-                <p><strong>Horsepower:</strong> {car.horsepower} HP</p>
-              </div>
-            </div>
-          ))
-        )}
+      <h1>My Garage</h1>
+      <div className={styles.tabs}>
+        <button onClick={() => setActiveTab("cars")} className={activeTab === "cars" ? styles.active : ""}>
+          Cars
+        </button>
+        <button onClick={() => setActiveTab("tracks")} className={activeTab === "tracks" ? styles.active : ""}>
+          Tracks
+        </button>
+        <button onClick={() => setActiveTab("posts")} className={activeTab === "posts" ? styles.active : ""}>
+          Posts
+        </button>
+      </div>
+
+      <div className={styles.content}>
+        {activeTab === "cars" && <AddCar />}
+        {activeTab === "tracks" && <AddTrack />}
+        {activeTab === "posts" && <AddPost />}
       </div>
     </div>
   );

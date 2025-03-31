@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./AddCar.module.css"; // Импортираме стиловете
+import styles from "./AddCar.module.css";
 
 const AddCar = ({ onCarAdded }) => {
   const [car, setCar] = useState({
@@ -32,49 +32,12 @@ const AddCar = ({ onCarAdded }) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <h2>Add a New Car</h2>
-      <input
-        type="text"
-        placeholder="Brand"
-        value={car.brand}
-        onChange={(e) => setCar({ ...car, brand: e.target.value })}
-        className={styles.input}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Model"
-        value={car.model}
-        onChange={(e) => setCar({ ...car, model: e.target.value })}
-        className={styles.input}
-        required
-      />
-      <input
-        type="number"
-        placeholder="Year"
-        value={car.year}
-        onChange={(e) => setCar({ ...car, year: e.target.value })}
-        className={styles.input}
-        required
-      />
-      <input
-        type="number"
-        placeholder="Horsepower (HP)"
-        value={car.horsepower}
-        onChange={(e) => setCar({ ...car, horsepower: e.target.value })}
-        className={styles.input}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Image URL"
-        value={car.image}
-        onChange={(e) => setCar({ ...car, image: e.target.value })}
-        className={styles.input}
-        required
-      />
-      <button type="submit" className={styles.button}>
-        Add Car
-      </button>
+      <input type="text" placeholder="Brand" value={car.brand} onChange={(e) => setCar({ ...car, brand: e.target.value })} className={styles.input} required />
+      <input type="text" placeholder="Model" value={car.model} onChange={(e) => setCar({ ...car, model: e.target.value })} className={styles.input} required />
+      <input type="number" placeholder="Year" value={car.year} onChange={(e) => setCar({ ...car, year: e.target.value })} className={styles.input} required />
+      <input type="number" placeholder="Horsepower (HP)" value={car.horsepower} onChange={(e) => setCar({ ...car, horsepower: e.target.value })} className={styles.input} required />
+      <input type="text" placeholder="Image URL" value={car.image} onChange={(e) => setCar({ ...car, image: e.target.value })} className={styles.input} required />
+      <button type="submit" className={styles.button}>Add Car</button>
     </form>
   );
 };

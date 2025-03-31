@@ -2,21 +2,29 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../services/authService";
 import styles from "./Styles/login.module.css";
+import { useAuth } from "../context/AuthProvider";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { setUser } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     
     try {
-      await login(formData);
-      navigate("/my-garage"); // Пренасочване след успешен login
-    } catch (err) {
-      setError(err.message);
+      const userData = await login(formData);
+      if (userData._id) {
+        setUser(userData); 
+        localStorage.setItem("user", JSON.stringify(userData));// Обновяваме контекста
+        navigate("/garage"); // Пренасочваме след успешен логин
+      } else {
+        console.error("Грешка при логин");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
     }
   };
 

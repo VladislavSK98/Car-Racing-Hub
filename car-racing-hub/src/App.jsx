@@ -10,29 +10,56 @@ import Garage from "./pages/Garage.jsx";
 import Tracks from "./pages/Tracks.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
-
+import { AuthProvider } from "./context/AuthProvider.jsx";
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoute from "./routes/PublicRoute.jsx";
 
 function App() {
- 
-
   return (
-    <Router>
-      <Header />
-      <Navigation />
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/parking" element={<Parking />} />
-        <Route path="/garage" element={<Garage />} />
-        <Route path="/tracks" element={<Tracks />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/details/:id" element={<Details />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+    <AuthProvider>
+      <Router>
+        <Header />
+        <Navigation />
 
-      <Footer />
-    </Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/parking" element={<Parking />} />
+          <Route path="/tracks" element={<Tracks />} />
+          <Route path="/details/:id" element={<Details />} />
+          
+          <Route
+            path="/garage"
+            element={
+              <PrivateRoute>
+                <Garage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+        <Footer />
+      </Router>
+    </AuthProvider>
   );
 }
 

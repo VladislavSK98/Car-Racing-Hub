@@ -4,7 +4,7 @@ import { register } from "../services/authService";
 import styles from "./Styles/register.module.css";
 
 const Register = () => {
-  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  const [formData, setFormData] = useState({ username: "", email: "", password: "", });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
