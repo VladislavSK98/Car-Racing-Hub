@@ -4,8 +4,9 @@ const dbConnector = require('./config/db');
 // const mongoose = require('mongoose');
 const apiRouter = require('./router');
 const cors = require('cors');
-// const config = require('./config/config');
+const config = require('./config/config');
 const { errorHandler } = require('./utils');
+const { getAllTracks } = require('./controllers/trackController'); 
 
 
 
@@ -17,11 +18,13 @@ dbConnector()
     require('./config/express')(app);
 
     app.use(cors({
-      origin: config.origin,
-      credentials: true
+      origin: config, // Разрешава заявки само от фронтенда
+    credentials: true
     }));
 
     app.use('/api', apiRouter);
+
+    app.get('/api/tracks', getAllTracks);
 
     app.use(errorHandler);
 
