@@ -1,0 +1,86 @@
+/* Стилове за контейнера на формата */
+.container {
+    max-width: 400px;  /* Това може да е малко тясно, да го увеличим */
+    width: 400px; ;       /* За да се адаптира според ширината на родителския елемент */
+    margin: 50px auto;
+    padding: 20px;
+    background: linear-gradient(to bottom, #111, #222); /* Преход от тъмни цветове за фон */
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.6); /* Червена сенка за акцент */
+    text-align: center;
+    box-sizing: border-box; /* За да се уверим, че padding не ще наруши размера */
+}
+
+/* Стилове за заглавието (h2) */
+h2 {
+    font-size: 2rem;
+    color: #ff0000; /* Червен текст */
+    text-transform: uppercase;
+    text-shadow: 3px 3px 10px rgba(255, 0, 0, 0.8); /* Сенки за по-силен ефект */
+    margin-bottom: 20px;
+}
+
+/* Стилове за input полетата (email и password) */
+.input {
+    width: 100%;  /* За да се разпространи по цялата ширина на контейнера */
+    padding: 10px;
+    margin: 10px 0;
+    background: #1b1b1b;
+    border: 2px solid #ff0000; /* Червена рамка за по-силен визуален ефект */
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.username {
+    width: 100%;  /* За да се разпространи по цялата ширина на контейнера */
+    padding: 10px;
+    margin: 10px 0;
+    background: #0c0c0c;
+    border: 2px solid #ff0000; /* Червена рамка за по-силен визуален ефект */
+    color: rgb(106, 31, 31);
+    font-size: 1rem;
+    border-radius: 5px; 
+}
+
+/* Стилове за бутона за логин */
+.button {
+    width: 100%;   /* За да заема цялата ширина на контейнера */
+    padding: 10px;
+    background: #ff0000; /* Червен фон */
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+
+/* Ховер ефект за бутона */
+.button:hover {
+    background: #cc0000; /* По-тъмен червен фон при ховър */
+}
+
+/* Стилове за съобщения за грешка (не се използва в текущия код, но може да се добави) */
+.error {
+    color: #ff4c4c;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+/* Стилове за линка за регистрация */
+.field {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.field a {
+    color: #ff0000; /* Червен цвят за линка */
+    text-decoration: none;
+}
+
+.field a:hover {
+    text-decoration: underline; /* Подчертаване при ховър */
+}

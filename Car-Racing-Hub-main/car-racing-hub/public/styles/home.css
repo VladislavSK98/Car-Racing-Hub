@@ -1,0 +1,131 @@
+/* Начален екран */
+#welcome-world {
+    background: #111;
+    color: #fff;
+    padding: 3rem 1rem;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.welcome-message h2 {
+    font-size: 2.8rem;
+    margin-bottom: 0.3rem;
+    color: #ff4d00;
+    letter-spacing: 1px;
+}
+
+.welcome-message h3 {
+    font-size: 2rem;
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+#welcome-world img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(255, 77, 0, 0.4);
+}
+
+/* Секция с пистите */
+#home-page {
+    margin-top: 3rem;
+    padding: 0 1rem;
+}
+
+#home-page h1 {
+    font-size: 2.5rem;
+    color: #ff4d00;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px #000;
+}
+
+/* Карта за всяка писта */
+.track {
+    background: #1c1c1c;
+    color: #eee;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.track:hover {
+    transform: translateY(-5px);
+}
+
+.track img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.track h3 {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    color: #ffb300;
+}
+
+.track .info {
+    font-size: 0.95rem;
+    color: #bbb;
+}
+
+/* Бутон */
+.btn.details-btn {
+    background-color: #ff4d00;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn.details-btn:hover {
+    background-color: #e03e00;
+}
+
+/* Когато няма елементи */
+.no-articles {
+    font-style: italic;
+    color: #999;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.track-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.track-list img {
+    width: 300px; /* Променяме ширината на картите */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.track-list img:hover {
+    transform: scale(1.05); /* Малко увеличение при hover */
+}
+
+/* Стилове за цитатите */
+.quote-container blockquote {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

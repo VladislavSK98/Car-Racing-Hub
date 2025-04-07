@@ -1,0 +1,169 @@
+.my-garage {
+    background: #111;
+    color: #eee;
+    padding: 2rem 1rem;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+}
+
+.profile-header img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ff4d00;
+    box-shadow: 0 0 10px rgba(255, 77, 0, 0.5);
+}
+
+.profile-header h1 {
+    color: #ff4d00;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.section h2 {
+    color: #ffb300;
+    font-size: 1.8rem;
+}
+
+.section button {
+    background-color: #ff4d00;
+    color: white;
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.section button:hover {
+    background-color: #e03e00;
+}
+
+/* Car form */
+.car-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: #1c1c1c;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 2rem;
+}
+
+.car-form input,
+.car-form textarea {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    background: #2a2a2a;
+    color: #eee;
+}
+
+.car-form button {
+    align-self: flex-start;
+}
+
+/* Cars */
+.car-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.car-card {
+    background: #1c1c1c;
+    border-radius: 12px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+}
+
+.car-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
+
+/* Lap Times Table */
+.my-times table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1c1c1c;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.my-times th,
+.my-times td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.my-times th {
+    background: #2a2a2a;
+    color: #ffb300;
+}
+
+.my-times td {
+    color: #ccc;
+}
+.car-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.car-actions button {
+    background: #333;
+    color: #ffb300;
+    border: none;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.car-actions button:hover {
+    background: #444;
+    color: #ff4d00;
+}
+
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
