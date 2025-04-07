@@ -173,6 +173,18 @@ function getComments(req, res, next) {
         .catch(next);
 }
 
+async function addPost(req, res) {
+    const { title, content, author } = req.body;
+    try {
+      const newPost = new Post({ title, content, author });
+      await newPost.save();
+      res.status(201).json({ success: true, post: newPost });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, message: "Failed to add post" });
+    }
+  };
+
 
 module.exports = {
     getLatestsPosts,
@@ -186,5 +198,6 @@ module.exports = {
     addComment,
     getPost,
     getComments,
+    addPost,
     
 };

@@ -25,7 +25,7 @@ function register(req, res, next) {
         res.cookie(authCookieName, token, {
           httpOnly: true,
           sameSite: "none",
-          secure: true,
+          secure: false,
         });
       } else {
         res.cookie(authCookieName, token, { httpOnly: true });
@@ -48,37 +48,41 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
-  const { email, password } = req.body;
+    const { email, password } = req.body;
 
-  userModel
-    .findOne({ email })
-    .then((user) => {
-      if (!user) {
-        return res.status(401).send({ message: "Wrong email or password" });
-      }
-      return Promise.all([user, user.matchPassword(password)]);
-    })
-    .then(([user, match]) => {
-      if (!match) {
-        return res.status(401).send({ message: "Wrong email or password" });
-      }
-
-      user = bsonToJson(user);
-      user = removePassword(user);
-
-      const token = utils.jwt.createToken({ id: user._id });
-      res.cookie(authCookieName, token, {
-        httpOnly: true,
-        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-        secure: process.env.NODE_ENV === "production",
-      });
-
-      res.status(200).send({ user, token });
-
-      res.status(200).send(user);
-    })
-    .catch(next);
+    userModel
+        .findOne({ email })
+        .then((user) => {
+            if (!user) {
+                return res.status(401).send({ message: "Wrong email or password" });
+            }
+            return Promise.all([user, user.matchPassword(password)]);
+        })
+        .then(([user, match]) => {
+          if (!match) {
+              return res.status(401).send({ message: "Wrong email or password" });
+          }
+      
+          user = bsonToJson(user);
+          user = removePassword(user);
+      
+          const token = utils.jwt.createToken({ id: user._id });
+      
+          res.cookie(authCookieName, token, {
+              httpOnly: true,
+              sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+              secure: process.env.NODE_ENV === "production",
+          });
+      
+          res.status(200).send({
+              user,
+              accessToken: token,
+          });
+      })
+      
+        .catch(next);
 }
+
 
 function logout(req, res) {
   const token = req.cookies[authCookieName];

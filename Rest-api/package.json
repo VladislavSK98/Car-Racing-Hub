@@ -30,6 +30,7 @@
     "mongoose": "^5.13.22"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "nodemon": "^2.0.4"
   }
 }
