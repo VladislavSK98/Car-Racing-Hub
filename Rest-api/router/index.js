@@ -19,11 +19,13 @@ router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.post('/logout', authController.logout);
 
-router.post('/posts', postController.addPost);
+router.post('/posts', authMiddleware, postController.createPost);
+
 
 router.get('/users/:id', getProfileInfo);
 router.get('/users/me', authMiddleware, authController.getProfileInfo);
 router.put('/users/me', authMiddleware, authController.editProfileInfo);
+router.get('/api/posts/:id', postController.getPost);
 
 router.use('/users', users);
 router.use('/cars', cars);

@@ -113,18 +113,27 @@ function getCarDetails(req, res, next) {
 }
 
 
+async function likeCar(req, res, next) {
+    const { carId } = req.params;
+    const { _id: userId } = req.user;
 
-function likeCar(req, res, next) {
-    const { carId } = req.params; 
-    const { _id: userId } = req.user; 
-  
-    carModel.updateOne(
-      { _id: carId },
-      { $addToSet: { likes: userId } } 
-    )
-    .then(() => res.status(200).json({ message: 'Car liked successfully!' }))
-    .catch(next); 
-  }
+    try {
+        const car = await carModel.findById(carId);
+        if (!car) return res.status(404).json({ message: 'Car not found' });
+
+        const alreadyLiked = car.likes.includes(userId);
+        if (alreadyLiked) {
+            car.likes = car.likes.filter(id => id.toString() !== userId.toString());
+        } else {
+            car.likes.push(userId);
+        }
+
+        await car.save();
+        res.status(200).json({ message: alreadyLiked ? 'Unliked car' : 'Liked car' });
+    } catch (err) {
+        next(err);
+    }
+}
 
 
 module.exports = {
