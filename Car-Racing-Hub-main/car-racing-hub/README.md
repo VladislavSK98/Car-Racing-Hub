@@ -1,12 +1,73 @@
-# React + Vite
+# 🏎️ Car Racing Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Car Racing Hub** is a social platform for car enthusiasts where users can showcase their vehicles, track performance, post updates, and share their passion for racing.
 
-Currently, two official plugins are available:
+![Car Racing Hub Banner](https://via.placeholder.com/1000x300?text=Car+Racing+Hub+🚗+🔥)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🌐 Live Demo
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🚀 Coming soon...
+
+---
+
+## 🧩 Features
+
+- ✅ User authentication (Login / Register)
+- 🚗 Personal garage — add, edit, and delete your cars
+- 🏁 Track management — save race tracks you’ve visited
+- ⏱️ Lap time tracking — record lap times with car and track info
+- 📝 Post creation — share stories, updates, and builds
+- 🔎 Car details — see full specs and modifications
+- 🧑‍💻 Only car owners can edit or delete their vehicles
+
+---
+
+## 📸 Preview
+
+*(Coming soon: screenshots or GIFs demonstrating key features)*
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend        | Backend            | Database |
+|----------------|--------------------|----------|
+| React (Vite)    | Node.js + Express  | MongoDB  |
+| React Router    | RESTful API        | Mongoose |
+| Context API     | JWT Authentication |          |
+| Tailwind / CSS  | CORS, Middleware   |          |
+
+---
+
+
+---
+
+## 🧑‍💻 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/VladislavSK98/Car-Racing-Hub.git
+cd Car-Racing-Hub
+
+
+cd Rest-Api
+npm install
+
+cd ../Rest-Api
+npm start
+
+Runs on: http://localhost:5000
+
+Start Frontend
+
+cd ../car-racing-hub
+npm install
+npm run dev
+Runs on: http://localhost:5173
+
+
+🙌 Acknowledgments
+Thanks to everyone supporting the open-source community and to all fellow petrolheads 🛞
