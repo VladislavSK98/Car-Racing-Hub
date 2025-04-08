@@ -15,6 +15,8 @@ import { ToastContainer } from 'react-toastify';
 import MyGarage from './components/Garage/Garage';
 import CarDetails from './components/CarDetails/CarDetails';
 import CarEdit from './components/Car-Edit/CarEdit';
+import Parking from './components/Parking/Parking'; 
+
 
 
 const Admin = lazy(() => import('./components/admin/Admin'));
@@ -29,6 +31,7 @@ function App() {
                 <main id="main-content">
                     <Routes>
                         <Route index element={<Home />} />
+                        <Route path="/parking" element={<Parking />} />
                         <Route element={<AuthGuard />}>
                             <Route path="/garage" element={<MyGarage />} />
                             <Route path="/cars/:carId" element={<CarDetails />} />
