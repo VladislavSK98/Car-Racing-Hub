@@ -1,5 +1,4 @@
 const { userModel, carModel } = require('../models');
-const Garage = require('../models/garageModel'); 
 
 function newCar(make, model, year, userId, power, color, imageUrl) {
     return carModel.create({ make, model, year, userId, power, color, imageUrl })
@@ -11,25 +10,6 @@ function newCar(make, model, year, userId, power, color, imageUrl) {
         });
 }
 
-function createCar(req, res, next) {
-    const { _id: userId } = req.user;
-    const { make, model, year, power, color, imageUrl, mods } = req.body;
-
-    newCar(make, model, year, userId, power, color, imageUrl, mods)
-        .then(async (car) => {
-            // Добавяне и в гаража:
-            let garage = await Garage.findOne({ user: userId });
-            if (!garage) {
-                garage = new Garage({ user: userId, cars: [] });
-            }
-
-            garage.cars.push(car._id);
-            await garage.save();
-
-            res.status(201).json(car);
-        })
-        .catch(next);
-}
 function getCarsByUserId(req, res, next) {
     const { userId } = req.params;  
     carModel.find({ userId })
@@ -37,7 +17,6 @@ function getCarsByUserId(req, res, next) {
         .then(cars => res.status(200).json(cars))
         .catch(next);
 }
-
 
 function getAllCars(req, res, next) {
     carModel.find()
@@ -52,6 +31,15 @@ function getAllCars(req, res, next) {
             })
             .catch(next);
             
+}
+
+function createCar(req, res, next) {
+    const { _id: userId } = req.user;
+    const { make, model, year, power, color, imageUrl } = req.body;  
+
+    newCar(make, model, year, userId, power, color, imageUrl)  
+        .then(car => res.status(201).json(car))
+        .catch(next);
 }
 
 function editCar(req, res, next) {
@@ -113,28 +101,17 @@ function getCarDetails(req, res, next) {
 }
 
 
-async function likeCar(req, res, next) {
-    const { carId } = req.params;
-    const { _id: userId } = req.user;
-
-    try {
-        const car = await carModel.findById(carId);
-        if (!car) return res.status(404).json({ message: 'Car not found' });
-
-        const alreadyLiked = car.likes.includes(userId);
-        if (alreadyLiked) {
-            car.likes = car.likes.filter(id => id.toString() !== userId.toString());
-        } else {
-            car.likes.push(userId);
-        }
-
-        await car.save();
-        res.status(200).json({ message: alreadyLiked ? 'Unliked car' : 'Liked car' });
-    } catch (err) {
-        next(err);
-    }
-}
-
+function likeCar(req, res, next) {
+    const { carId } = req.params; 
+    const { _id: userId } = req.user; 
+  
+    carModel.updateOne(
+      { _id: carId },
+      { $addToSet: { likes: userId } } 
+    )
+    .then(() => res.status(200).json({ message: 'Car liked successfully!' }))
+    .catch(next); 
+  }
 
 module.exports = {
     getAllCars,

@@ -1,4 +1,3 @@
-require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const secret = process.env.SECRET || 'SoftSecret';
 
@@ -8,7 +7,6 @@ function createToken(data) {
 
 function verifyToken(token) {
     return new Promise((resolve, reject) => {
-        console.log("SECRET:", process.env.SECRET)
         jwt.verify(token, secret, (err, data) => {
             if (err) {
                 reject(err);
