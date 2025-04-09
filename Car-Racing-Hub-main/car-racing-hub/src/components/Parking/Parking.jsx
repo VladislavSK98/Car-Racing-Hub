@@ -9,6 +9,7 @@ export default function Parking() {
     return (
         <section className="parking-page">
             <header className="parking-header">
+                {/* <img alt="parking-img" className="parking-img" /> */}
                 <h1>🏁 Parking – Social zone for Cars, Tracks, Posts and Passion</h1>
                 <p>Check all cars, tracks, posts and lap-times from car community!</p>
             </header>

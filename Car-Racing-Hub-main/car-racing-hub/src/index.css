@@ -62,3 +62,14 @@ button:hover {
   color: #ff1e00;
 }
 
+main {
+  flex: 1; /* заема цялото възможно пространство между header и footer */
+}
+footer {
+  background-color: #111;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto; /* Ключът! */
+}
+

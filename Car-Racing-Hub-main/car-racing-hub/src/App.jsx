@@ -16,6 +16,8 @@ import MyGarage from './components/Garage/Garage';
 import CarDetails from './components/CarDetails/CarDetails';
 import CarEdit from './components/Car-Edit/CarEdit';
 import Parking from './components/Parking/Parking'; 
+import Tracks from './components/Tracks/Tracks';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -35,7 +37,8 @@ function App() {
                         <Route element={<AuthGuard />}>
                             <Route path="/garage" element={<MyGarage />} />
                             <Route path="/cars/:carId" element={<CarDetails />} />
-                            <Route path="/cars/:carId/edit" element={<CarEdit />} />
+                            <Route path="/cars/edit/:carId" element={<CarEdit />} />
+                            <Route path="/tracks" element={<Tracks/>} />"
                          
                             <Route path="/logout" element={<Logout />} />
                         </Route>
@@ -53,6 +56,7 @@ function App() {
 
                 <ToastContainer />
             </div>
+            {/* <Footer /> */}
         </UserProvider>
     )
 }

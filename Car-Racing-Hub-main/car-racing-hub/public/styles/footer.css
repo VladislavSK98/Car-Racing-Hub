@@ -1,0 +1,66 @@
+.footer {
+    background-color: #111;
+    color: #eee;
+    padding: 40px 20px 20px;
+    margin-top: 60px;
+}
+footer {
+    background-color: #111;
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: auto; /* Ключът! */
+  }
+  
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-logo h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 8px 0;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-socials .icons a {
+    margin-right: 15px;
+    color: #ccc;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.footer-socials .icons a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+    font-size: 14px;
+}

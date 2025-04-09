@@ -23,7 +23,9 @@ export default function CarDetails() {
 
     if (!car) return <p>Loading...</p>;
 
-    const isOwner = (car.ownerId === user._id) || (car.ownerId?._id === user._id);
+    const isOwner = (car.userId === user._id) || (car.userId?._id === user._id);
+    console.log('Car Owner:', car.ownerId);
+console.log('User ID:', user?._id);
 
     return (
         <section className="car-details-page">
@@ -46,9 +48,11 @@ export default function CarDetails() {
                     <p><strong>Power:</strong> {car.power} hp</p>
                     <p><strong>Modifications:</strong> {car.mods || 'None'}</p>
 
+                    
+
                     {isOwner && (
                         <div className="car-actions">
-                            <button onClick={() => navigate(`/garage/edit/${car._id}`)}>✏️ Edit</button>
+                            <button onClick={() => navigate(`/cars/edit/${car._id}`)}>✏️ Edit</button>
                             <button onClick={handleDelete}>❌ Delete</button>
                         </div>
                     )}

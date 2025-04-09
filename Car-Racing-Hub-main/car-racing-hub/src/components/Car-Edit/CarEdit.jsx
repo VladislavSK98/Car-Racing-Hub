@@ -39,9 +39,10 @@ export default function CarEdit() {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <section className="car-edit">
-            <h2>Edit Car: {carData.make} {carData.model}</h2>
-            <form onSubmit={handleSubmit}>
+        <section className="car-edit-page">
+  <div className="edit-card">
+    <h2>Edit Car: {carData.make} {carData.model}</h2>
+    <form onSubmit={handleSubmit}>
                 <input
                     name="make"
                     value={carData.make}
@@ -83,6 +84,7 @@ export default function CarEdit() {
                 />
                 <button type="submit">Save Changes</button>
             </form>
+            </div>
         </section>
     );
 }

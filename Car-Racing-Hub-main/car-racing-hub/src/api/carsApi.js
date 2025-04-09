@@ -76,3 +76,8 @@ export const getCarById = (carId) =>
 export const getAllCars = () =>
     apiClient.get('/cars').then(res => res.data);
   
+export async function getTopCars() {
+  const res = await fetch('/api/cars');
+  if (!res.ok) throw new Error('Failed to fetch top cars');
+  return res.json();
+}

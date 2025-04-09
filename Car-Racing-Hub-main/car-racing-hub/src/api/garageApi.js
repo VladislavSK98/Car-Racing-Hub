@@ -13,3 +13,9 @@ export async function addCarToGarage(userId, carData) {
     if (!res.ok) throw new Error('Failed to add car');
     return res.json();
 }
+
+export async function getUserPosts(userId) {
+    const res = await fetch(`/api/posts/user/${userId}`);
+    if (!res.ok) throw new Error('Failed to fetch user posts');
+    return res.json();
+}
