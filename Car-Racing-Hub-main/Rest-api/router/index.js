@@ -6,7 +6,7 @@ const likes = require('./likes');
 const cars = require('./cars');
 const test = require('./test');
 const garage = require('./garage'); // ✅ добавено
-const trackRouter = require('./tracks'); // ✅ добавено
+const tracks = require('./tracks'); // ✅ добавено
 
 const { authController } = require('../controllers');
 const { getProfileInfo } = require('../controllers/auth');
@@ -34,6 +34,7 @@ router.use('/posts', posts);
 router.use('/likes', likes);
 router.use('/test', test);
 router.use('/garage', garage); // ✅ добавено
-router.use('/tracks', trackRouter); // ✅ добавено
+router.use('/tracks', tracks); // ✅ добавено
+
 
 module.exports = router;

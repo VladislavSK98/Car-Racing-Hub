@@ -1,8 +1,8 @@
 const { userModel, carModel } = require('../models');
 const Garage = require('../models/garageModel'); 
 
-function newCar(make, model, year, userId, power, color, imageUrl) {
-    return carModel.create({ make, model, year, userId, power, color, imageUrl })
+function newCar(make, model, year, mods,userId, power, color, imageUrl) {
+    return carModel.create({ make, model, year, mods, userId, power, color, imageUrl })
         .then(car => {
             return userModel.updateOne(
                 { _id: userId },
@@ -56,12 +56,24 @@ function getAllCars(req, res, next) {
 
 function editCar(req, res, next) {
     const { carId } = req.params;
-    const { make, model, year, power, color, imageUrl } = req.body;
+    const { make, model, year, power, color, imageUrl, mods } = req.body;
     const { _id: userId } = req.user;
 
+    console.log('🔧 Request to edit by user:', userId);
+
+    carModel.findById(carId).then(car => {
+        if (!car) {
+            console.log('🚫 Car not found');
+            return res.status(404).json({ message: 'Car not found' });
+        }
+        console.log('📦 Found car, owner:', car.userId.toString());
+        console.log('👤 Requesting user:', userId.toString());
+    });
+    
+
     carModel.findOneAndUpdate(
-        { _id: carId, userId },
-        { make, model, year, power, color, imageUrl },
+        { _id: carId, },
+        { make, model, year, power, color, imageUrl, mods },
         { new: true }
     )
         .then(updatedCar => {

@@ -169,6 +169,17 @@ function getPost(req, res, next) {
         .catch(next);
 }
 
+function getPostsByUserId(req, res, next) {
+    const { userId } = req.params;
+
+    postModel.find({ userId })
+        .sort({ created_at: -1 })
+        .populate('themeId', 'name')
+        .then(posts => res.status(200).json(posts))
+        .catch(next);
+}
+
+
 module.exports = {
     createPost,
     getAllPosts,
@@ -180,4 +191,5 @@ module.exports = {
     addComment,
     getComments,
     getPost,
+    getPostsByUserId,
 };

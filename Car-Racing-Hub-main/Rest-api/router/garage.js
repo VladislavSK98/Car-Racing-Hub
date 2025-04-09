@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Garage = require('../models/garageModel');
 const carModel = require('../models/carModel');
+const Track = require('../models/trackModel');
 const { auth } = require('../utils');
 const mongoose = require('mongoose');
 // GET cars for logged-in user
@@ -75,6 +76,39 @@ router.post('/:userId/cars', auth(), async (req, res) => {
     } catch (err) {
         console.error('❌ Error adding car to garage:', err); // 🧨 това ще ти покаже проблема
         res.status(500).json({ message: 'Failed to add car', error: err.message });
+    }
+});
+
+router.post('/:userId/tracks', auth(), async (req, res) => {
+    try {
+        const { name, location, imageUrl } = req.body;
+        const userId = req.params.userId;
+
+        if (!mongoose.Types.ObjectId.isValid(userId)) {
+            return res.status(400).json({ message: 'Invalid user ID' });
+        }
+
+        const track = new Track({
+            name,
+            location,
+            imageUrl,
+            userId,
+        });
+
+        await track.save();
+
+        let garage = await Garage.findOne({ user: userId });
+        if (!garage) {
+            garage = new Garage({ user: new mongoose.Types.ObjectId(userId), tracks: [] });
+        }
+
+        garage.tracks.push(track._id);
+        await garage.save();
+
+        res.status(201).json(track);
+    } catch (err) {
+        console.error('❌ Error adding track to garage:', err);
+        res.status(500).json({ message: 'Failed to add track', error: err.message });
     }
 });
 

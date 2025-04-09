@@ -51,9 +51,9 @@ async function deleteTrack(req, res) {
 }
 
 async function addTrack(req, res) {
-  const { name, location, laps, length } = req.body;
+  const { name, location, laps, length, imageUrl } = req.body;
   try {
-    const newTrack = new trackModel({ name, location, laps, length });
+    const newTrack = new trackModel({ name, location, laps, length, imageUrl });
     await newTrack.save();
     res.status(201).json({ success: true, track: newTrack });
   } catch (error) {

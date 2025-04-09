@@ -15,6 +15,8 @@ router.get('/latest', postController.getLatestsPosts);
 router.put('/:postId', auth(), postController.editPost);
 router.delete('/:postId/:themeId', auth(), postController.deletePost);
 router.get('/:id/full', postController.getPost);
+router.get('/user/:userId', postController.getPostsByUserId);
+
 
 
 

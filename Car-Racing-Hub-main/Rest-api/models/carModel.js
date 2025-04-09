@@ -28,7 +28,10 @@ const carSchema = new mongoose.Schema({
         type: String,
         
     },
-
+    mods: {
+        type: String,
+        required: false,  
+    },
     userId: {
         type: ObjectId,
         ref: "User",  
